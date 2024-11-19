@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Javascript Events</title>
+</head>
+<body>
+    <!-- <button onclick="document.getElementById('demo').innerHTML = Date();">Click Me!</button> -->
+
+    <!-- <button onclick="document.getElementById('myButton').innerHTML=Date()" >Click me</button> -->
+    <!-- <p id="demo"></p> -->
+
+    <!-- <button id="myButton">Click me</button> -->
+
+    <!-- <input type="text" placeholder="Enter something" id="myInput"> -->
+
+    <!-- <form id="myForm" >
+        <input type="text" placeholder="Enter something" id="myInput">
+        <button type="submit">Button</button>
+    </form> -->
+
+    <div id="outer-div" style="padding: 20px; background-color: lightblue;">
+        Outer div
+        <div id="inner-div" style="padding: 20px; background-color: lightcoral;">
+            inner div
+            <button id="my-button">Click me</button>
+        </div>
+    </div>
+    <script>
+
+        // document.getElementById("myButton").addEventListener("onmouseover", function(){
+        //     console.log("The button has been clicked");
+        // })
+
+        // let p = document.getElementById("demo").innerHTML = Date();
+
+
+        // document.getElementById("myButton").addEventListener("click", function(){
+        //     console.log("Hello");
+        // })
+
+
+        // document.getElementById("myInput").addEventListener("keyup", function(event){
+        //     // console.log("I am in an input field");
+        //     console.log(event.target.value)
+        // })
+
+        document.getElementById("outer-div").addEventListener("click", function(){
+            console.log("Outer div (capturing)");
+        }, true)
+        document.getElementById("inner-div").addEventListener("click", function(){
+            console.log("Inner div (capturing)");
+        }, false)
+        document.getElementById("my-button").addEventListener("click", function(){
+            console.log("My button (capturing)");
+        }, true)
+        
+
+        // document.getElementById("myForm").addEventListener("submit", (e) => {
+        //     e.preventDefault();
+        //     console.log("The form has been submitted");
+        // })
+
+
+        // document.getElementById("myButton").addEventListener("mouseover", function(){
+        //     alert("The button has been clicked");
+        //     console.log("Clicked");
+        // })
+
+    </script> 
+
+
+</body>
+</html>

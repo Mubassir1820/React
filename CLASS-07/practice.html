@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- <script src="https://cdn.tailwindcss.com"></script> -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+    <title>Product List and cart</title>
+    <style>
+        * {
+            font-family: "Poppins", sans-serif;
+        }
+        
+        #product-list {
+            display: flex;
+            flex-direction: column;
+            width: 500px;
+            gap: 10px;
+            font-size: large;
+        }
+        .product {
+            padding: 10px;
+            margin-right: 5px;
+            /* border: 1px solid crimson; */
+            text-align: center;
+            backdrop-filter: blur(10px);
+        }
+        .container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding-top: 150px;
+            gap: 50px;
+        }
+        #checkout {
+            border-radius: 5px;
+            cursor: pointer;
+            background-color: blue;
+            color: azure;
+        }
+        #cart-items {
+            list-style-type: none;
+            margin: 0;
+        }
+        .product {
+            padding-bottom: 10px;
+        }
+        /* #cart {
+            align-items: center;
+        } */
+    </style>
+</head>
+<body>
+    
+    <div class="container">
+        <div id="product-list">
+            <!-- Product will be displayed here -->
+        </div>
+        <div id="cart">
+            <h2>Your Cart</h2>
+            <ul id="cart-items">
+                <!-- Cart items will be added here -->
+            </ul>
+            <p>Total: $<span id="total">0</span></p>
+            <button id="checkout">Checkout</button>
+        </div>
+        
+
+    </div>
+    
+    
+    
+    <!-- <img id="myImage" /> -->
+    
+    
+    <!-- <div class="info">
+
+    </div> -->
+    
+    
+    <!-- <h1 id="header">Welcome to the product store</h1> -->
+    
+    
+    <!-- <ul id="myList">
+        <li>Item 1</li>
+    </ul>
+
+
+    <div id="button-container">
+
+    </div> -->
+    
+    
+    <!-- <div class="product">Product 1</div>
+    <div class="product">Product 2</div> -->
+    
+    <!-- <div id="unique-container">Unique Container</div>
+    <button id="buttonId">Button</button> -->
+    
+    
+    <!-- <input type="text" placeholder="Enter your text here">
+    <input type="date"> -->
+    
+    
+    <!-- <p>This is a paragraph element</p> -->
+    <!-- <span id="para">This is a paragraph consisting an id</span> -->
+     <!-- <div class="container">
+        <P>This is a paragraph inside a div</P>
+     </div> -->
+    
+    <!-- <div class="box">This is a box</div> -->
+
+    <!-- <button id="toggleButton">Toggle Content</button>
+    <div id="content">This is some content</div> -->
+
+    <!-- <p>This is a paragraph</p> -->
+
+    <!-- <div class="product">Product 1</div>
+    <div class="product">Product 2</div>
+    <div class="product">Product 3</div> -->
+
+    <!-- <h1>Welcome to my page</h1>
+    <p>This is a paragraph</p>
+    <button>Click me</button> -->
+    <!-- <div id="container">
+        <p>Another paragraph inside the div</p>
+    </div> --> 
+
+
+    <script>
+       
+        let products = [
+            {id: 1, name: "Laptop", price: 999},
+            {id: 2, name: "Phone", price: 499},
+            {id: 3, name: "Headphones", price: 199},
+        ]
+
+        
+        
+        function displayProducts(){
+            let productList = document.getElementById("product-list");
+
+            products.forEach(product => {
+                let productDiv = document.createElement("div");
+                productDiv.classList.add("product");
+
+                productDiv.innerHTML = `
+                <h3>${product.name}</h3>
+                <p>Price: $${product.price}</p>
+                <button onClick="addToCart(${product.id})">Add to cart</button>                
+                `
+
+                productList.append(productDiv);
+            })
+        }
+        
+        displayProducts();
+
+
+        let cart = [];
+        let total = 0;
+
+        function addToCart(productId){
+            // console.log(productId);
+            let product = products.find((it) => it.id == productId);
+            // console.log(product)
+            cart.push(product);
+            
+
+            // Update the cart UI
+            let cartItems = document.getElementById('cart-items');
+
+            let cartItem = document.createElement("li");
+            cartItem.textContent = product.name + " :$" + product.price;
+            cartItems.append(cartItem);
+
+            total += product.price
+
+            document.getElementById("total").textContent = total.toFixed(2);
+        }
+
+
+
+        // let myImage = document.getElementById("myImage");
+        // myImage.setAttribute('src', 'https://images.pexels.com/photos/28199959/pexels-photo-28199959/free-photo-of-the-old-man-of-storr-skye-scotland.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1')
+        // myImage.setAttribute('src', 'A new image')
+
+        // myImage.remove()
+        
+        // let infoDev = document.querySelector(".info")
+        // infoDev.innerHTML = "<strong> Updated Information </strong>"
+        
+        
+        // let header = document.getElementById("header")
+        // header.textContent = "Product Store";
+        
+        
+        // let newLi = document.createElement('li');
+
+        // newLi.textContent = 'Item 2'
+        
+        // let newList = document.getElementById("myList");
+        // newList.appendChild(newLi)
+
+
+        // let newBtn = document.createElement('button');
+        // newBtn.textContent = "Click me"
+
+        // newBtn.className = "btn";
+
+        // let btnContainer = document.getElementById("button-container");
+        // btnContainer.appendChild(newBtn);
+
+        
+
+
+        // let newDiv = document.createElement("div")
+
+        // newDiv.textContent = "This is a new div";
+        // newDiv.className = "new-div"
+
+
+        // document.body.append(newDiv);
+        
+        // let products = document.getElementsByClassName("product");
+        // console.log(products.length);
+        // // for(let i = 0; i < products.length; i++) {
+        // //     console.log(products[i]);
+        // // }
+        
+        // let newProduct = document.createElement("div");
+        // newProduct.className = "Product"
+        // newProduct.textContent = "Product 3"
+
+        // document.body.appendChild(newProduct);
+        // console.log(products.length)
+
+        // for(let product of products) {
+        //     product.style.backgroundColor = 'yellow';
+        //     product.style.marginBottom = '5px';
+
+
+        //     product.addEventListener("click", function(){
+        //         alert(`${product.textContent} has been clicked`);
+        //     })
+        // }
+
+
+        // let container = document.getElementById("unique-container");
+        // console.log(container);
+
+        // let buttonBox = document.getElementById("buttonId");
+        // buttonBox.textContent = 'Click me';
+
+        // buttonBox.style.backgroundColor = 'lightblue';
+
+        // buttonBox.addEventListener('click', function(){
+        //     alert("Button has been clicked");
+        // })
+        
+        // let inputDate = document.querySelector("input[type='date']")
+        // console.log(inputDate)
+        
+        
+        // let firstParagraph = document.querySelector("#para");
+        // console.log(firstParagraph);
+
+        // let insideDiv = document.querySelector(".container p");
+        // console.log(insideDiv);
+        
+        // let box = document.querySelector(".box");
+        // box.style.backgroundColor = "lightblue";
+
+        // box.style.height = "400px";
+        // box.style.width = "200%";
+        
+        // let toggledbutton = document.querySelector("#toggleButton");
+        
+        // let divContent = document.querySelector("#content")
+
+        // toggledbutton.addEventListener("click", function(){
+        //     if (divContent.style.display === 'none') {
+        //         divContent.style.display = 'block';
+        //     }
+        //     else {
+        //         divContent.style.display = 'none';
+        //     }
+        // })
+        
+        // To remove the paragraph dynamically
+        // let firstParagraph = document.querySelector("p");
+        // firstParagraph.remove()
+        
+        
+        // To change the content of a element dynamically
+        // let firstParagraph = document.querySelector("p");
+        // firstParagraph.textContent = "This paragraph has been updated";
+
+        // adding Div dynamically
+        // let newDiv = document.createElement("div")
+        // newDiv.textContent = "I have created a new div";
+
+        // document.body.appendChild(newDiv);
+
+
+        // let products = document.getElementsByClassName("product")
+        // console.log(products)
+        
+        // for(let i=0; i< products.length; i++) {
+        //     console.log(products[i].textContent)
+        // }
+        
+        // let firstParagraph = document.querySelector('p');
+        // console.log(firstParagraph);
+
+        // document.querySelector('button').addEventListener('click', function(){
+        //     console.log("The button has been clicked");
+        //     // alert("The button has been clicked");
+        // })
+
+        // let firstParagraph = document.querySelector("p")
+        // console.log(firstParagraph.innerHTML);
+
+        // let container = document.querySelector("#container");
+        // console.log(container.innerHTML);
+
+        // let container = document.getElementById("container");
+        // console.log(container.innerHTML);
+    </script>
+</body>
+</html>

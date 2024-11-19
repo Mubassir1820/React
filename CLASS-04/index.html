@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Javascript Events</title>
+</head>
+<body>
+    <button id="myButton">Click me</button>
+    <!-- <input type="text" placeholder="Enter something" id="myInput"> -->
+
+    <!-- <form id="myForm">
+        <input type="text" placeholder="Enter Something">
+        <button type="submit">Submit</button>
+    </form> -->
+
+    <!-- <div id="outer-div" style="padding: 20px; background-color: lightblue;">
+        Outer div
+        <div id="inner-div" style="padding: 20px; background-color: lightcoral;">
+            inner div
+            <button id="my-button">Click me</button>
+        </div>
+    </div> -->
+
+    <script>
+        // Event Capturing / bubbling / Deligation use cases
+
+        // document.getElementById("outer-div").addEventListener("click", function(event){
+            
+        //     console.log(event.target.tagName);
+        //     if(event.target.tagname == "BUTTON") {
+        //         console.log("Button was clicked");
+        //     }
+        // })
+
+
+        // document.getElementById("outer-div").addEventListener("click", function(){
+        //     console.log("Outer div (capturing)");
+        // }, true)
+        // document.getElementById("inner-div").addEventListener("click", function(){
+        //     console.log("Inner div (capturing)");
+        // }, false)
+        // document.getElementById("my-button").addEventListener("click", function(){
+        //     console.log("My button (capturing)");
+        // }, true)
+        
+        
+        
+        
+        // document.getElementById("myForm").addEventListener("submit", (e) => {
+        //     e.preventDefault();
+        //     console.log("The form is submitted");
+        // })
+        document.getElementById("myButton").addEventListener("click", function(){
+            alert("Hello ");
+            console.log("Clicked");
+        });
+        // document.getElementById("myInput").addEventListener("keyup", function(event){
+        //     // console.log("I am in a input field");
+        //     console.log(event.target.value);
+        // })
+    </script>
+</body>
+</html>
